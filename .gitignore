@@ -1,0 +1,16 @@
+**/build/
+*.buckd
+**/buck
+
+**/xcuserdata/
+.DS_Store
+*.mobileprovision
+*.dSYM.zip
+*.ipa
+*.xcuserstate
+*.xcodeproj
+*.xcworkspace
+*.d
+*.dia
+*.o
+*.orig

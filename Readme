@@ -1,0 +1,13 @@
+Xcode build command:
+
+time xcodebuild -project 'PerformanceTest_Xcode.xcodeproj' \
+-scheme 'PerformanceTest_Xcode' \
+-configuration Debug \
+-destination 'platform=iOS Simulator,name=iPhone 14' \
+-derivedDataPath build
+
+Bazel:
+bazel build //App:ios-app
+
+Buck:
+./buck build //App:PerformanceTestApp
