@@ -1,6 +1,12 @@
 **/build/
 *.buckd
 **/buck
+**/buck-out
+
+**/bazel-bin
+**/bazel-out
+**/bazel-testlogs
+**/bazel-PerformanceTest_Bazel
 
 **/xcuserdata/
 .DS_Store
