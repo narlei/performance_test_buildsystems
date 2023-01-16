@@ -6,16 +6,22 @@ load("@build_bazel_rules_apple//apple:resources.bzl", "apple_resource_bundle")
 apple_resource_bundle(
     name = "PerformanceTestAppAssets",
     bundle_id = "com.narlei.resources",
-    resources = glob(["**/**/*.xcassets"]) + glob(["**/**/*.storyboard"]),
+    resources = glob(["App/**/*.xcassets"]) + glob(["App/**/*.storyboard"]),
     visibility = ["//visibility:public"],
 )
 
 
 swift_library(
-    name = "PerformanceTestLibrary",
-    module_name = "PerformanceTestLibrary",
-    srcs = glob(["**/**/*.swift"]),
+    name = "BaseSource",
+    module_name = "BaseSource",
+    srcs = glob(["App/**/*.swift"]),
     visibility = ["//visibility:public"],
+    deps = [
+        "//Libraries/LibraryA:LibraryA",
+        "//Libraries/LibraryB:LibraryB",
+        "//Libraries/LibraryC:LibraryC",
+        "//Libraries/LibraryD:LibraryD",
+    ]
 )
 
 ios_application(
@@ -27,8 +33,12 @@ ios_application(
     ],
     infoplists = [":Info.plist"],
     deps = [
-        ":PerformanceTestLibrary",
-        ":PerformanceTestAppAssets"
+        ":BaseSource",
+        ":PerformanceTestAppAssets",
+        "//Libraries/LibraryA:LibraryA",
+        "//Libraries/LibraryB:LibraryB",
+        "//Libraries/LibraryC:LibraryC",
+        "//Libraries/LibraryD:LibraryD",
     ],
     minimum_os_version = "15.0",
     visibility = ["//visibility:public"],
@@ -46,7 +56,8 @@ xcodeproj(
     build_mode = "bazel",
     project_name = "ios-app",
     tags = ["manual"],
+    focused_targets = ["//Libraries/LibraryA:LibraryA"],
     top_level_targets = [
-        ":ios-app",
+       top_level_target(":ios-app", target_environments = ["simulator"]),
     ],
 )
