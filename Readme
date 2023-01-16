@@ -1,6 +1,6 @@
 # Bazel:
 cd PerformanceTest_Bazel
-bazel run //:ios-app
+bazel run //:xcodeproj
 
 ### Environment
 bazel 6.0.0
