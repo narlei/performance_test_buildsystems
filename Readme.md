@@ -1,9 +1,11 @@
 # Bazel:
+
 `cd PerformanceTest_Bazel`
 
 `bazel run //:xcodeproj`
 
 ### Environment
+
 - bazel 6.0.0
 - openjdk 11.0.11 2021-04-20
 - macOS 13.1
