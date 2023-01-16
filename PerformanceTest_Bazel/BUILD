@@ -31,7 +31,7 @@ ios_application(
         "iphone",
         "ipad",
     ],
-    infoplists = [":Info.plist"],
+    infoplists = ["App/Info.plist"],
     deps = [
         ":BaseSource",
         ":PerformanceTestAppAssets",
